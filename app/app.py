@@ -2,16 +2,17 @@ from flask import Flask, flash, make_response, redirect, render_template, reques
 import pymongo
 from form import SignInForm, SignUpForm,PetForm
 import uuid
+import os
 
 app = Flask(__name__, static_folder='static',static_url_path='')
 SECRET_KEY = b'0&\x93Cm}\x86\xff\xfa\xe1\xb4\xd9\xb2\xec\x867'
 app.config['SECRET_KEY'] = SECRET_KEY
 
 def get_db(db_name):
-    client = pymongo.MongoClient(host='localhost',
+    client = pymongo.MongoClient(host=os.environ['MONGO_URI'],
                          port=27017, 
-                         username='root',
-                         password='pass',
+                         username=os.environ['MONGO_USERNAME'],
+                         password=os.environ['MONGO_PASS'],
                          authSource='admin')
     db = client[db_name]
     return db

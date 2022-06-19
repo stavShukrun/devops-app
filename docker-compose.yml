@@ -4,6 +4,10 @@ services:
   app:
     container_name: app
     build: .
+    environment:
+      - MONGO_URI=mongodb
+      - MONGO_USERNAME=root
+      - MONGO_PASS=pass
     ports:
       - "5000:5000"
     links:
@@ -18,5 +22,5 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=pass
       - MONGO_INITDB_DATABASE=stav-db
-    ports:
-      - 27017:27017
+    # ports:
+    #   - 27017:27017
