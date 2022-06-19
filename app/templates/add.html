@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>add-pet</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css"/>
+
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul class=flashes>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+
+			<!-- Header -->
+			<header id="header">
+				<h1><a href="#">Veterinarian</a> by Stav shukrun</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li>
+							<a href="#" class="icon solid fa-angle-down">menu</a>
+							<ul>
+								<li><a href="search">Search-pet</a></li>
+								<li><a href="add">Add-pet</a></li>
+								<li><a href="delete">Delete-pet</a></li>
+							</ul>
+						</li>
+							<li><a href="/sign-out" class="button">Logout</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container medium">
+                        <!-- The Modal -->
+                        <form method="POST">
+                            <div class="container">
+                              <h2>create pet account</h2>
+                              <p>Please fill in this form to create an account.</p>
+                              <hr>
+
+							  <label for="chip"><b>chip</b></label>
+                              <input type="text" placeholder="for change pet enter chip" name="chip">
+                          
+                              <label for="pet name"><b>pet_name</b></label>
+                              <input type="text" placeholder="Enter pet name" name="pet_name" required>
+                          
+                              <label for="owner"><b>owner</b></label>
+                              <input type="text" placeholder="Enter owner name" name="owner" required>
+                          
+                              <label for="phone_num"><b>phone_num</b></label>
+                              <input type="text" placeholder="phone_num" name="phone_num" required>
+
+                              <input type="checkbox" id="chk" name="Vaccines" value="true" />
+                              <label for="chk"><b>Vaccineted</b></label><br>
+                                                    
+                              <div class="clearfix">
+                                <button type="button" href="/add" class="button">Cancel</button>
+                                <button type="submit" class="button">Create</button>
+                              </div>
+                            </div>
+                          </form>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+        	<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

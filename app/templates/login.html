@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>login</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+
+</head>
+
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="#">Veterinarian</a> by Stav shukrun</h1>
+			<nav id="nav">
+				<li><a href="sign-up" class="button">Sign Up</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<section id="main" class="container medium">
+			<!-- The Modal -->
+			<div id="id01" class="modal">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close"
+					title="Close Modal">&times;</span>
+				<h2>Sign In</h2>
+			</div>
+
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul class=flashes>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+
+			<!-- Modal Content -->
+			<form method="POST">
+
+				<div class="container">
+					<label for="name"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="name" required
+						value="{{ request.form['name'] }}">
+
+					<label for="password"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="password" required
+						value="{{ request.form['password'] }}">
+					<p class="error error--hidden"></p>
+
+					<button type="submit" class="button">Login</button>
+				</div>
+			</form>
+	</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="copyright">
+			<li>&copy; Untitled. All rights reserved.</li>
+			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
