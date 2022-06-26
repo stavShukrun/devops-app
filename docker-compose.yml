@@ -34,6 +34,8 @@ services:
       - 80:80
     networks:
       - my-app
+    depends_on:
+      - app
 
 networks:
     my-app:
