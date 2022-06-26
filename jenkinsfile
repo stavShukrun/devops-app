@@ -7,15 +7,10 @@ pipeline{
         emailAddress = "shukrunstav@gmail.com"
    }
     stages{
-        stage("preparing workspace"){
+        stage("preparing workspace and test"){
             steps{
                 deleteDir()
                 checkout scm
-            }
-        }
-
-        stage('plan tests'){
-            steps{
                 script{
                     if (env.BRANCH_NAME.startsWith('feature/')){
                         def commitMessage = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
@@ -36,7 +31,7 @@ pipeline{
                 expression {env.BRANCH_NAME.startsWith('release/')}
             }
             steps{
-                git branch: env.BRANCH_NAME, credentialsId: '053257ea-6adf-43e2-a87a-b7f3ae37b299', url: "git@gitlab.stav:root/analytics.git"
+                git branch: env.BRANCH_NAME, credentialsId: 'SHA256:1SlfbpTWO1yy6SUiUwtcoGHLS8oEjIGjKSI8ra35XU0', url: "git@github.com:stavShukrun/devops-app.git"
                 script{
                     major_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | head -n1", returnStdout: true).trim()
                     minor_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | tail -n1", returnStdout: true).trim()
@@ -53,9 +48,9 @@ pipeline{
             }
         }
 
-        stage("build test and pack") {
+        stage("build") {
             steps {
-                configFileProvider([configFile(fileId: 'setting-artifactory', variable: 'MAVEN_SETTINGS')]) {
+                {
                     sh ''
                 }
             }
@@ -68,7 +63,7 @@ pipeline{
                 }
             }
             steps {
-                configFileProvider([configFile(fileId: 'setting-artifactory', variable: 'MAVEN_SETTINGS')]) {
+                {
                     sh """
                         """
                 }
@@ -87,7 +82,8 @@ pipeline{
                             sh ''
                         }
                     else {
-                            sh """"""
+                            sh """
+                            """
                         }
                     }
                 }
