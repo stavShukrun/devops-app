@@ -31,7 +31,7 @@ pipeline{
                 expression {env.BRANCH_NAME.startsWith('release/')}
             }
             steps{
-                git branch: env.BRANCH_NAME, credentialsId: 'SHA256:1SlfbpTWO1yy6SUiUwtcoGHLS8oEjIGjKSI8ra35XU0', url: "git@github.com:stavShukrun/devops-app.git"
+                git branch: env.BRANCH_NAME, credentialsId: 'stav-github', url: "git@github.com:stavShukrun/devops-app.git"
                 script{
                     major_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | head -n1", returnStdout: true).trim()
                     minor_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | tail -n1", returnStdout: true).trim()
