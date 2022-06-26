@@ -50,9 +50,7 @@ pipeline{
 
         stage("build") {
             steps {
-                {
                     sh ''
-                }
             }
         }
 
@@ -63,10 +61,8 @@ pipeline{
                 }
             }
             steps {
-                {
                     sh """
                         """
-                }
             }
         }
         stage("publish"){
