@@ -116,9 +116,7 @@ def delete_pet():
     pet_db = db["pet"]
     if request.method == 'POST':
         chip_id = request.form.get('Input')
-        print(chip_id)
         try:
-            import pdb;pdb.set_trace()
             if pet_db.find_one({'chip':chip_id})['chip'] == chip_id :
                 x = pet_db.find_one_and_delete({'chip':chip_id})
                 flash(f"pet has deleted:{chip_id}")
