@@ -1,3 +1,5 @@
 /env/
-/terraform/
-/k8s/
+# /terraform/
+/k8s/compute/
+values*
+variables*

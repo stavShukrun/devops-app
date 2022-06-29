@@ -1,0 +1,11 @@
+apiVersion: v2
+name: stav-app-helm
+description: A Helm chart for deploying stav webapp for the DevOps bootcamp.
+type: application
+version: 0.1.0
+appVersion: "v5"
+
+dependencies:
+  - name: mongodb
+    version: "12.1.13"
+    repository: "https://charts.bitnami.com/bitnami"

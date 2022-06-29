@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "{{ .Values.app.name }}-clean-db"
+  namespace: default
+spec:
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 1
+  schedule: {{ .Values.cronJob.schedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongo
+            image: mongo:focal
+            command: ["/bin/bash"]
+            args: ['-c','mongo --eval "db.clients.remove({});" mongodb://{{ index .Values.mongodb.auth.usernames 0 }}:{{ index .Values.mongodb.auth.passwords 0 }}}@{{ .Values.mongodb.fullnameOverride }}-0.{{ .Values.mongodb.fullnameOverride }}-headless:27017/{{ index .Values.mongodb.auth.databases 0 }}']
+            imagePullPolicy: IfNotPresent
+          restartPolicy: "OnFailure"
+      backoffLimit: 3
