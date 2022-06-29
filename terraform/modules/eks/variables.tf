@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "instance_types" {
   type        = string
-  default     = "t2.micro"
+  default     = "t2.xlarge"
 }
 
 variable "ami_id" {
