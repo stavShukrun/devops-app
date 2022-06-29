@@ -157,3 +157,11 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_autoscaler_attach" {
 output "eks_cluster_autoscaler_arn" {
   value = aws_iam_role.eks_cluster_autoscaler.arn
 }
+
+output "cluster_endpoint" {
+  value = aws_eks_cluster.stav-eks.endpoint
+}
+
+output "cluster_ca_certificate" {
+  value = aws_eks_cluster.stav-eks.certificate_authority[0].data
+}
