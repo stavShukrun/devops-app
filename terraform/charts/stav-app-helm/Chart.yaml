@@ -9,3 +9,5 @@ dependencies:
   - name: mongodb
     version: "12.1.13"
     repository: "https://charts.bitnami.com/bitnami"
+  - name: ingress-nginx
+    repository: https://kubernetes.github.io/ingress-nginx
