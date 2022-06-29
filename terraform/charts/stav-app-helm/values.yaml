@@ -1,9 +1,9 @@
 app:
   replicaCount: 3
   requestsCPU: "500m"
-  requestsMemory: "512Mi"
+  requestsMemory: "128Mi"
   maxCPU: "1000m"
-  maxMemory: "1024Mi"
+  maxMemory: "256Mi"
   name: "vet-app"
 
 service:
@@ -28,10 +28,10 @@ mongodb:
   resources:
     requests:
       cpu: 500m
-      memory: 512Mi
+      memory: 128Mi
     limits:
       cpu: 1000m
-      memory: 1024Mi
+      memory: 256Mi
   auth:
     rootUser: root
     rootPassword: stav
