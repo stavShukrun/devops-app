@@ -28,5 +28,18 @@ provider "aws" {
 }
 
 provider "kubernetes" {
-  config_path    = "~/.kube/config"
+    host = aws_eks_cluster.stav-eks.endpoint
+    config_path    = "~/.kube/config"
+}
+
+provider "helm" {
+    kubernetes {
+        host = aws_eks_cluster.stav-eks.endpoint
+        cluster_ca_certificate = base64decode(aws_eks_cluster.stav-eks.certificate_authority[0].data)
+        exec {
+            api_version = "client.authentication.k8s.io/v1alpha1"
+            args        = ["eks", "get-token", "--cluster-name", "stav-eks"]
+            command     = "aws"
+        }
+    }
 }

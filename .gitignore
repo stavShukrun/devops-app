@@ -1,5 +1,4 @@
 /env/
-# /terraform/
-/k8s/compute/
+/terraform/charts/compute/
 values*
 variables*
