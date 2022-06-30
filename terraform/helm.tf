@@ -31,7 +31,7 @@ resource "helm_release" "app"{
 #     max_history      = 3
 # }
 
-resource "helm_release" "nginx_ingress" {
+resource "helm_release" "nginx-ingress-controller" {
   name       = "nginx-ingress-controller"
 
   repository = "https://charts.bitnami.com/bitnami"
