@@ -21,7 +21,7 @@ resource "helm_release" "app"{
 
 # resource "helm_release" "argocd" {
 #     name             = "argocd"
-#     chart            = "kube-prometheus-stack"
+#     chart            = ""
 #     repository       = "https://github.com/stavShukrun/argo.git"
 #     namespace        = "monitoring"
 #     version          = "17.1.3"
@@ -42,3 +42,55 @@ resource "helm_release" "app"{
 #     value = "ClusterIP"
 #   }
 # }
+
+# eksctl create iamserviceaccount \
+#   --cluster=stav-eks \
+#   --namespace=kube-system \
+#   --name=aws-load-balancer-controller \
+#   --role-name "AmazonEKSLoadBalancerControllerRole" \
+#   --attach-policy-arn=arn:aws:iam::644435390668:policy/AWSLoadBalancerControllerIAMPolicy \
+#   --approve
+
+
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Principal": {
+#                 "Federated": "arn:aws:iam::644435390668:oidc-provider/oidc.eks.eu-west-1.amazonaws.com/id/72D1DA6833D01C3093E5F0DF89F35E25"
+#             },
+#             "Action": "sts:AssumeRoleWithWebIdentity",
+#             "Condition": {
+#                 "StringEquals": {
+#                     "oidc.eks.eu-west-1.amazonaws.com/id/72D1DA6833D01C3093E5F0DF89F35E25:aud": "sts.amazonaws.com",
+#                     "oidc.eks.eu-west-1.amazonaws.com/id/72D1DA6833D01C3093E5F0DF89F35E25:sub": "system:serviceaccount:kube-system:aws-load-balancer-controller"
+#                 }
+#             }
+#         }
+#     ]
+# }
+
+
+# aws iam create-role \
+#   --role-name AmazonEKSLoadBalancerControllerRole \
+#   --assume-role-policy-document file://"tp.json"
+
+
+#   aws iam attach-role-policy \
+#   --policy-arn arn:aws:iam::644435390668:policy/AWSLoadBalancerControllerIAMPolicy \
+#   --role-name AmazonEKSLoadBalancerControllerRole
+
+
+
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   labels:
+#     app.kubernetes.io/component: controller
+#     app.kubernetes.io/name: aws-load-balancer-controller
+#   name: aws-load-balancer-controller
+#   namespace: kube-system
+#   annotations:
+#     eks.amazonaws.com/role-arn: arn:aws:iam::644435390668:role/AmazonEKSLoadBalancerControllerRole
+

@@ -153,39 +153,3 @@ resource "aws_route_table_association" "public_rt_2" {
   subnet_id      = aws_subnet.public_subnet_2.id
   route_table_id = aws_route_table.public.id
 }
-
-# resource "aws_subnet" "stav-subnet" {
-#     vpc_id = aws_vpc.stav-terraform-vpc.id
-#     cidr_block = var.subnet_cidr
-#     availability_zone = var.subnet_az
-
-#     tags = {
-#       Name = var.subnet_tag_name
-#     }
-# }
-
-# resource "aws_internet_gateway" "stav-igw" {
-#     vpc_id = aws_vpc.stav-terraform-vpc.id
-
-#     tags = {
-#       "Name" = "stav-igw"
-#     }
-# }
-
-# resource "aws_route_table" "stav-igw-route" {
-#     vpc_id = aws_vpc.stav-terraform-vpc.id
-
-#     route {
-#         cidr_block = "0.0.0.0/0"
-#         gateway_id = aws_internet_gateway.stav-igw.id
-#     }
-
-#     tags = {
-#       "Name" = "stav-igw-route"
-#     }
-# }
-
-# resource "aws_main_route_table_association" "stav-igw-route" {
-#     vpc_id = aws_vpc.stav-terraform-vpc.id
-#     route_table_id = aws_route_table.stav-igw-route.id
-# }
