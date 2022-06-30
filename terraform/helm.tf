@@ -1,6 +1,6 @@
 resource "helm_release" "app"{
-    name = "stav-app-helm"
-    namespace = "vet-app"
+    name = "app"
+    namespace = "default"
     chart = "./charts/stav-app-helm"
     repository  = "/home/ubuntu/DevOps-portfolio/terraform/charts/stav-app-helm"
     values = [
