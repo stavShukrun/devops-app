@@ -10,7 +10,7 @@ service:
   type: ClusterIP
   port: 80
   applicationPort: 5000
-  website: "stavcrm.ddns.net"
+  website: "stav-vet.ddns.net"
 
 cronJob:
   schedule: "0 0 * * *"
