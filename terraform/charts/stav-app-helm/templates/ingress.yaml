@@ -18,7 +18,6 @@ spec:
             name: "{{ .Values.app.name }}-clusterip"
             port:
               number: 80
-            targetPort: 5000
   tls:
   - secretName: stav-tls
     hosts:
