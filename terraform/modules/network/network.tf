@@ -21,7 +21,7 @@ resource "aws_subnet" "private_subnet_1" {
   tags = {
     "Name"                            = "${var.aws_region}a"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/demo1"      = "owned"
+    "kubernetes.io/cluster/demo1"     = "owned"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_subnet" "private_subnet_2" {
   tags = {
     "Name"                            = "${var.aws_region}b"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/stav-app"      = "owned"
+    "kubernetes.io/cluster/stav-app"  = "owned"
   }
 }
 
@@ -44,8 +44,8 @@ resource "aws_subnet" "public_subnet_1" {
   map_public_ip_on_launch = true
 
   tags = {
-    "Name"                       = "public-${var.aws_region}a"
-    "kubernetes.io/role/elb"     = "1"
+    "Name"                        = "public-${var.aws_region}a"
+    "kubernetes.io/role/elb"      = "1"
     "kubernetes.io/cluster/demo1" = "owned"
   }
 }
@@ -57,8 +57,8 @@ resource "aws_subnet" "public_subnet_2" {
   map_public_ip_on_launch = true
 
   tags = {
-    "Name"                       = "public-${var.aws_region}b"
-    "kubernetes.io/role/elb"     = "1"
+    "Name"                        = "public-${var.aws_region}b"
+    "kubernetes.io/role/elb"      = "1"
     "kubernetes.io/cluster/demo1" = "owned"
   }
 }

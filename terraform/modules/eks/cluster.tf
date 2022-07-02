@@ -70,7 +70,7 @@ resource "aws_eks_node_group" "private-nodes" {
 
   subnet_ids = [
     var.subnet_ids[0],
-    var.subnet_ids[1]
+    var.subnet_ids[0]
   ]
 
   instance_types = [var.instance_types]
