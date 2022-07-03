@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: MONGO_URI
-            value: mongodb
+            value: app-mongodb-headless
           - name: MONGO_USERNAME
             value: root
           - name: MONGO_PASS
