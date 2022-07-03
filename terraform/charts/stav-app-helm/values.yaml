@@ -34,9 +34,9 @@ mongodb:
       memory: 256Mi
   auth:
     rootUser: root
-    rootPassword: stav
+    rootPassword: pass
     databases: ["stav-db"]
-    usernames: ["root"]
+    usernames: ["stav"]
     passwords: ["pass"]
 
 controller:
