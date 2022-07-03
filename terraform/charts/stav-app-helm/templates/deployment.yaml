@@ -24,7 +24,7 @@ spec:
           - name: MONGO_USERNAME
             value: stav
           - name: MONGO_PASS
-            value: 12345678
+            value: "12345678"
           envFrom:
           - configMapRef:
               name: "{{ .Values.app.name }}-conf"
