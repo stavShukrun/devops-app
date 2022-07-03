@@ -22,9 +22,9 @@ spec:
           - name: MONGO_URI
             value: app-mongodb-headless
           - name: MONGO_USERNAME
-            value: root
+            value: stav
           - name: MONGO_PASS
-            value: pass
+            value: 12345678
           envFrom:
           - configMapRef:
               name: "{{ .Values.app.name }}-conf"

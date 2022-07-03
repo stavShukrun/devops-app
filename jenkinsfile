@@ -1,3 +1,4 @@
+container_name = "app"
 def runE2E = false
 def publish = false
 pipeline{
@@ -50,7 +51,13 @@ pipeline{
 
         stage("build") {
             steps {
-                    sh ''
+                sh 'docker-compose up --build -d'
+            }
+        }
+
+        stage("unit test") {
+            steps {
+                sh './test/UT.sh ${container_name} 5000'
             }
         }
 
@@ -61,32 +68,39 @@ pipeline{
                 }
             }
             steps {
-                    sh """
-                        """
+                    sh "./test/E2E.sh ${container_name} 5000"
             }
         }
+
         stage("publish"){
             when{
-                expression{
-                    publish
-                }
+                expression {env.BRANCH_NAME.startsWith('release/')}
             }
             steps{
             script{
-                configFileProvider([configFile(fileId: 'setting-artifactory', variable: 'MAVEN_SETTINGS')]) {
-                    if (env.BRANCH_NAME.startsWith('main')) {
-                            sh ''
-                        }
-                    else {
-                            sh """
-                            """
-                        }
-                    }
+                
+                }
+            }
+        }
+
+        stage("push tag"){
+            when{
+                expression {env.BRANCH_NAME.startsWith('release/')}
+            }
+            steps{
+            script{
+                
                 }
             }
         }
     }
     post{
+        always {
+            sh """ docker-compose down
+                   docker image rm -f ${container_name}
+                   docker system prune -af --volumes
+            """
+        }
         failure {
             echo "sorry, something did not work :( will remove image and container from local host"
                 mail body: "<b>failure :(</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL: ${env.BUILD_URL}", charset: 'UTF-8', mimeType: 'text/html', subject: "error CI: Project name -> ${env.JOB_NAME}", to: "${emailAddress}"
