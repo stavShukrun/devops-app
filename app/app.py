@@ -9,6 +9,7 @@ SECRET_KEY = b'0&\x93Cm}\x86\xff\xfa\xe1\xb4\xd9\xb2\xec\x867'
 app.config['SECRET_KEY'] = SECRET_KEY
 
 def get_db(db_name):
+    db_name = 'stav'
     client = pymongo.MongoClient(host=os.environ['MONGO_URI'],
                          port=27017, 
                          username=os.environ['MONGO_USERNAME'],
