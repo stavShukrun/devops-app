@@ -24,14 +24,6 @@ image:
 mongodb:
   architecture: "replicaset"
   replicaCount: 3
-  fullnameOveride: "mongodb"
-  resources:
-    requests:
-      cpu: 500m
-      memory: 128Mi
-    limits:
-      cpu: 1000m
-      memory: 256Mi
   auth:
     enabled: true
     rootUser: root
