@@ -33,11 +33,12 @@ mongodb:
       cpu: 1000m
       memory: 256Mi
   auth:
+    enabled: true
     rootUser: root
-    rootPassword: pass
-    databases: ["stav-db"]
-    usernames: ["stav"]
-    passwords: ["pass"]
+    rootPassword: password
+    databases: ["stav"]
+    usernames: []
+    passwords: []
 
 controller:
   ingressClass: nginx
