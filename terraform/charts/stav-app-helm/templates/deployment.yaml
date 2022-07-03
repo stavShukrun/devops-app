@@ -18,6 +18,13 @@ spec:
         - name: "{{ .Values.app.name }}-container"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: MONGO_URI
+            value: mongodb
+          - name: MONGO_USERNAME
+            value: root
+          - name: MONGO_PASS
+            value: pass
           envFrom:
           - configMapRef:
               name: "{{ .Values.app.name }}-conf"
