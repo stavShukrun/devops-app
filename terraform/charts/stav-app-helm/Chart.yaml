@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v1
 name: stav-app-helm
 description: A Helm chart for deploying stav webapp for the DevOps bootcamp.
 type: application
