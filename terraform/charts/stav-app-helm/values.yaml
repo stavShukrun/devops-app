@@ -37,8 +37,8 @@ mongodb:
     rootUser: root
     rootPassword: password
     databases: ["stav"]
-    usernames: []
-    passwords: []
+    usernames: ["stav"]
+    passwords: ["12345678"]
 
 controller:
   ingressClass: nginx
