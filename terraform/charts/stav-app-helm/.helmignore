@@ -21,3 +21,5 @@
 .idea/
 *.tmproj
 .vscode/
+
+./kubectl-cert-manager.tar.gz
