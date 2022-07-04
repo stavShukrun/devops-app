@@ -10,3 +10,9 @@ k apply --validate=false -f https://github.com/jetstack/cert-manager/releases/do
 k apply -f letsencrypt-prod.yaml
 helm install cert-manager --namespace cert-manager jetstack/cert-manager --version v0.14.1
 helm upgrade --install stav-app-helm . --wait
+
+helm install argocd \ 
+--set config.secret.argocdServiceAdminPassword=stavsh \
+ bitnami/argo-cd
+
+ k port-forward svc/argocd-argo-cd-service 8080:80
