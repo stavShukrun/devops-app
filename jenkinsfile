@@ -51,7 +51,9 @@ pipeline{
 
         stage("build") {
             steps {
-                sh 'docker-compose up --build -d'
+                sh """ll -la
+                sleep 10000
+                docker-compose up --build -d"""
             }
         }
 
