@@ -1,22 +1,36 @@
+aapiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo
+  namespace: default
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: https://github.com/stavShukrun/devops-app.git
+  password: <secret_token>
+  username: stavShukrun
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stav-app-argocd
-  namespace: argocd
+  name: login-system
+  namespace: default
 spec:
   project: default
   source:
-    repolURL: https://github.com/stavShukrun/argo.git
-    targetRevision: HEAD
-    path: .
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: default
-    
-    syncPolicy:
-      syncOptions:
-      - CreateNamespace=true
-    
-    automated:
+    repoURL: https://github.com/stavShukrun/devops-app.git
+    targetRevision: argocd
+    path: argocd/
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated: 
       selfHeal: true
-      prune: true
+      prune:  true
