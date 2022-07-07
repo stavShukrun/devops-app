@@ -15,6 +15,6 @@ resource "helm_release" "argocd" {
     version          = "4.9.7"
     create_namespace = true
     values = [
-    file("/home/ubuntu/DevOps-portfolio/terraform/charts/argocd/application.yaml")
+    file("/home/ubuntu/DevOps-portfolio/terraform/charts/argocd/templates/application.yaml")
   ]
 }
