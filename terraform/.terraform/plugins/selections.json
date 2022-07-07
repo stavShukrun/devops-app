@@ -1,0 +1,18 @@
+{
+  "registry.terraform.io/hashicorp/aws": {
+    "hash": "h1:ztLo3vMTlVXIFCC5ik9Imgnc882VM/pL8epewMR/Ui4=",
+    "version": "3.14.1"
+  },
+  "registry.terraform.io/hashicorp/helm": {
+    "hash": "h1:UKYo6uGP8s1x/JXgaiEY0rjl1PazALGRy+tnOAcpB6Q=",
+    "version": "2.6.0"
+  },
+  "registry.terraform.io/hashicorp/kubernetes": {
+    "hash": "h1:ZN+/TrLGbDzmOuhr5x45s02GqFrz5S6gNuO9luofmFA=",
+    "version": "2.11.0"
+  },
+  "registry.terraform.io/hashicorp/tls": {
+    "hash": "h1:DUaxEAVnHl8UXkogaJHBMescDjHiZf8GcePldAcZJVo=",
+    "version": "3.4.0"
+  }
+}
