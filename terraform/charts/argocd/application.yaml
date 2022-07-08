@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repolURL: https://github.com/stavShukrun/argo.git
+    repolURL: https://github.com/stavShukrun//devops-app/argo.git
     targetRevision: HEAD
     path: .
     destination:
