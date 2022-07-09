@@ -19,7 +19,7 @@ metadata:
 spec:
   project: default
   source:
-    repolURL: https://github.com/stavShukrun/devops-app.git
+    repoURL: https://github.com/stavShukrun/devops-app.git
     targetRevision: HEAD
     path: .
   destination:
