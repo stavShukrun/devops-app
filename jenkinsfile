@@ -52,7 +52,7 @@ pipeline{
         stage("build") {
             steps {
                 sh '''
-                    su docker-compose version
+                    docker-compose version
                     docker-compose up --build -d --wait'''
             }
         }
