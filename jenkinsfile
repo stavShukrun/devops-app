@@ -36,7 +36,7 @@ pipeline{
                 script{
                     major_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | head -n1", returnStdout: true).trim()
                     minor_version=sh(script: "echo ${env.BRANCH_NAME} | grep -Eo '[0-9]{1,24}' | tail -n1", returnStdout: true).trim()
-                    current_tag=sh(script: "git tag |  grep -Eo '[0-9]{1,24}' | tail -n 1 ", returnStdout: true).trim()
+                    current_tag=sh(script: "git tag |  grep -Eo '[0-9]{1,24}' | tail -n1 ", returnStdout: true).trim()
                     if ("${current_tag}" == '') {
                         echo "no Tags, will give a tag of ${major_version}.${minor_version}.1 now"
                         new_tag="${major_version}.${minor_version}.1"
@@ -51,10 +51,7 @@ pipeline{
 
         stage("build") {
             steps {
-                sh '''
-                    echo 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-                    docker-compose version
-                    docker-compose up --build -d --wait'''
+                sh 'docker-compose up --build -d'
             }
         }
 
