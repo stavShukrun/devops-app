@@ -57,7 +57,8 @@ pipeline{
 
         stage("unit test") {
             steps {
-                sh "./tests/UT.sh ${container_name} 5000"
+                sh """ curl localhost
+                ./tests/UT.sh ${container_name} 5000"""
             }
         }
 
