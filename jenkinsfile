@@ -57,7 +57,7 @@ pipeline{
 
         stage("unit test") {
             steps {
-                sh """ curl localhost
+                sh """ curl 52.208.130.142
                 ./tests/UT.sh ${container_name} 5000"""
             }
         }
