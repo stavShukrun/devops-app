@@ -28,7 +28,7 @@ services:
   nginx:
     image: nginx:1.20.0
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./app/static/:/var/www/static/
     ports:
       - 80:80
