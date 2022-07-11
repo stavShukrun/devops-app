@@ -51,15 +51,13 @@ pipeline{
 
         stage("build") {
             steps {
-                sh 'pwd'
-                sh 'ls -la'
                 sh 'docker-compose up --build -d'
             }
         }
 
         stage("unit test") {
             steps {
-                sh './tests/UT.sh ${container_name} 5000'
+                sh "./tests/UT.sh ${container_name} 5000"
             }
         }
 
@@ -70,7 +68,7 @@ pipeline{
                 }
             }
             steps {
-                    sh "./tests/E2E.sh ${container_name} 5000"
+                    sh """./tests/E2E.sh ${container_name} 5000"""
             }
         }
 
