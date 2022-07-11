@@ -59,7 +59,7 @@ pipeline{
 
         stage("unit test") {
             steps {
-                sh './test/UT.sh ${container_name} 5000'
+                sh './tests/UT.sh ${container_name} 5000'
             }
         }
 
@@ -70,7 +70,7 @@ pipeline{
                 }
             }
             steps {
-                    sh "./test/E2E.sh ${container_name} 5000"
+                    sh "./tests/E2E.sh ${container_name} 5000"
             }
         }
 
