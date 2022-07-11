@@ -98,7 +98,7 @@ pipeline{
             steps{
             withCredentials([string(credentialsId:"stav-github",url: "git@github.com:stavShukrun/devops-app.git")]) {
                 sh """ git tag ${new_tag} && git push https://git@github.com:stavShukrun/devops-app.git --tag
-                       sed -i "s/tag.*/tag: \'${new_tag}\'/" argocd/values.yaml
+                       sed -i "s/tag.*/tag: \'${new_tag}\'/" terraform/charts/stav-app-helm/values.yaml
                        git add .
                        git connfig --global user.email "shukrunstav@gmail.com"
                        git connfig --global user.name "stavshukrun"
