@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     path: ./terraform/charts/stav-app-helm
   destination:
-    server: https://vet-app-clusterip.default.svc
+    server: https://kubernetes.default.svc
     namespace: default
     
   syncPolicy:
