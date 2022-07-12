@@ -70,8 +70,7 @@ pipeline{
                 }
             }
             steps {
-                    sh """echo test pass
-                    docker ps"""
+                    sh """echo test pass"""
             }
         }
 
@@ -83,10 +82,8 @@ pipeline{
             }
             steps{
             script{
-                // docker.withRegistry("https://" + registry, "ecr:eu-west-1:" + registryCredential) {
-                //     docker.image("${container_name}").push("${new_tag}")
                 sh """ aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 644435390668.dkr.ecr.eu-west-1.amazonaws.com
-                docker tag app:latest 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
+                docker tag stav-app_release_100_app:latest 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
                 docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
                 """
                 }
