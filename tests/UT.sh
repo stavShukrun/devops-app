@@ -2,7 +2,7 @@
 
 counter=0
 max_attempts=30
-until $(curl --silent --head --fail 52.208.130.142); do
+until $(curl --silent --head --fail app); do
     if [ ${counter} -eq ${max_attempts} ]; then
         echo "To many try, Uint Test failed"
         exit 1
