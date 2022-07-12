@@ -101,8 +101,8 @@ pipeline{
                     sh """ git tag ${new_tag} && git push https://${token}@github.com/stavShukrun/devops-app.git --tag
                            sed -i "s/tag.*/tag: \'${new_tag}\'/" terraform/charts/stav-app-helm/values.yaml
                            git add .
-                           git connfig --global user.email "shukrunstav@gmail.com"
-                           git connfig --global user.name "stavshukrun"
+                           git config --global user.email "shukrunstav@gmail.com"
+                           git config --global user.name "stavshukrun"
                            git commit -m 'argocd values file update version ${new_tag}'
                            git push https://${token}@github.com/stavShukrun/devops-app.git
                     """
