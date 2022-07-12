@@ -104,8 +104,7 @@ pipeline{
                            git config --global user.email "shukrunstav@gmail.com"
                            git config --global user.name "stavshukrun"
                            git commit -m 'argocd values file update version ${new_tag}'
-                           git push https://${token}@github.com/stavShukrun/devops-app.git HEAD:${env.BRANCH_NAME}
-                    """
+                           git push https://${token}@github.com/stavShukrun/devops-app.git HEAD:${env.BRANCH_NAME} """
                 }
             }
         }
