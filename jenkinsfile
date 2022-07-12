@@ -57,8 +57,7 @@ pipeline{
 
         stage("unit test") {
             steps {
-                sh """ curl ${container_name}:5000
-                ./tests/UT.sh ${container_name} 5000"""
+                sh "./tests/UT.sh ${container_name} 5000"
             }
         }
 
@@ -73,21 +72,21 @@ pipeline{
             }
         }
 
-        stage("publish"){
-            when {
-                expression {
-                    publish
-                }
-            }
-            steps{
-            script{
-                sh """ aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 644435390668.dkr.ecr.eu-west-1.amazonaws.com
-                docker tag app:latest 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
-                docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
-                """
-                }
-            }
-        }
+        // stage("publish"){
+        //     when {
+        //         expression {
+        //             publish
+        //         }
+        //     }
+        //     steps{
+        //     script{
+        //         sh """ aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 644435390668.dkr.ecr.eu-west-1.amazonaws.com
+        //         docker tag app:latest 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
+        //         docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
+        //         """
+        //         }
+        //     }
+        // }
 
         stage("push tag"){
             when {
@@ -96,15 +95,16 @@ pipeline{
                 }
             }
             steps{
-            withCredentials([string(credentialsId:"stav-github",url: "git@github.com:stavShukrun/devops-app.git")]) {
-                sh """ git tag ${new_tag} && git push https://git@github.com:stavShukrun/devops-app.git --tag
-                       sed -i "s/tag.*/tag: \'${new_tag}\'/" terraform/charts/stav-app-helm/values.yaml
-                       git add .
-                       git connfig --global user.email "shukrunstav@gmail.com"
-                       git connfig --global user.name "stavshukrun"
-                       git commit -m 'argocd values file update version ${new_tag}'
-                       git push https://git@github.com:stavShukrun/devops-app.git
-                """
+            git branch: env.BRANCH_NAME, credentialsId: 'stav-github', url: "git@github.com:stavShukrun/devops-app.git" script {
+                // sh """ git tag ${new_tag} && git push https://git@github.com:stavShukrun/devops-app.git --tag
+                //        sed -i "s/tag.*/tag: \'${new_tag}\'/" terraform/charts/stav-app-helm/values.yaml
+                //        git add .
+                //        git connfig --global user.email "shukrunstav@gmail.com"
+                //        git connfig --global user.name "stavshukrun"
+                //        git commit -m 'argocd values file update version ${new_tag}'
+                //        git push https://git@github.com:stavShukrun/devops-app.git
+                // """
+                sh "git status"
                 }
             }
         }
