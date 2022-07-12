@@ -11,8 +11,12 @@ k apply -f letsencrypt-prod.yaml
 helm install cert-manager --namespace cert-manager jetstack/cert-manager --version v0.14.1
 helm upgrade --install stav-app-helm . --wait
 
+<<<<<<< HEAD
 helm install argocd \ 
 --set config.secret.argocdServiceAdminPassword=stavsh \
  bitnami/argo-cd
 
  k port-forward svc/argocd-argo-cd-service 8080:80
+=======
+kubectl port-forward -n argocd svc/argocd-server 8080:443 --address='0.0.0.0'
+>>>>>>> release/1.0.0

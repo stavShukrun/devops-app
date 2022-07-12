@@ -7,26 +7,14 @@ resource "helm_release" "app"{
   ]
 }
 
-# resource "helm_release" "prometheus" {
-#   name             = "prom"
-#   chart            = "kube-prometheus-stack"
-#   repository       = "https://prometheus-community.github.io/helm-charts"
-#   namespace        = "monitoring"
-#   version          = "17.1.3"
-#   create_namespace = true
-#   wait             = true
-#   reset_values     = true
-#   max_history      = 3
-# }
-
-# resource "helm_release" "argocd" {
-#     name             = "argocd"
-#     chart            = ""
-#     repository       = "https://github.com/stavShukrun/argo.git"
-#     namespace        = "monitoring"
-#     version          = "17.1.3"
-#     create_namespace = true
-#     wait             = true
-#     reset_values     = true
-#     max_history      = 3
-# }
+resource "helm_release" "argocd" {
+    name             = "argocd"
+    chart            = "argo-cd"
+    repository       = "https://argoproj.github.io/argo-helm"
+    namespace        = "argocd"
+    version          = "4.9.7"
+    create_namespace = true
+    values = [
+    file("/home/ubuntu/DevOps-portfolio/devops-app/terraform/charts/argocd/application.yaml")
+  ]
+}
