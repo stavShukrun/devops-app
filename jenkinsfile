@@ -53,11 +53,7 @@ pipeline{
 
         stage("build") {
             steps {
-                sh """
-                chmod 777 docker-compose.yaml
-                chmod 777 Dockerfile
-                ls -la
-                docker-compose up --build -d"""
+                sh """docker-compose up --build -d"""
             }
         }
 
