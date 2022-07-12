@@ -90,7 +90,6 @@ pipeline{
                 docker push 644435390668.dkr.ecr.eu-west-1.amazonaws.com/stav-app:${new_tag}
                 """
                 }
-                }
             }
         }
 
