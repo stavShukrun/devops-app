@@ -98,13 +98,13 @@ pipeline{
             }
             steps{
                 withCredentials([string(credentialsId: 'f71ff5d2-9b8b-4af8-9b63-de10790d76d6', variable: 'token')]) {
-                    sh """ git tag ${new_tag} && git push https://git@github.com:stavShukrun/devops-app.git --tag
+                    sh """ git tag ${new_tag} && git push https://${token}@github.com/stavShukrun/devops-app.git --tag
                            sed -i "s/tag.*/tag: \'${new_tag}\'/" terraform/charts/stav-app-helm/values.yaml
                            git add .
                            git connfig --global user.email "shukrunstav@gmail.com"
                            git connfig --global user.name "stavshukrun"
                            git commit -m 'argocd values file update version ${new_tag}'
-                           git push https://git@github.com:stavShukrun/devops-app.git
+                           git push https://${token}@github.com/stavShukrun/devops-app.git
                     """
                 }
             }
