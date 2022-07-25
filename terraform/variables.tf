@@ -1,6 +1,6 @@
 variable "ami_id" {
     type = string
-    default = "ami-0c1bc246476a5572b"
+    default = "ami-0d2a4a5d69e46ea0b"
 }
 
 variable "instance_type" {
@@ -15,7 +15,7 @@ variable "associate_public_ip_address" {
 
 variable "key_name" {
     type = string
-    default = "stav_hard_1"
+    default = "stav-devops-project"
 }
 
 variable "app_tag" {
@@ -95,7 +95,7 @@ variable "ingress_ssh_protocol" {
 
 variable "ingress_cidr" {
     type = string
-    default = "52.208.130.142/32"
+    default = "109.66.43.101/32"
 }
 
 variable "aws_region" {
